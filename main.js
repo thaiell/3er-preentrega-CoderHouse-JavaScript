@@ -1,7 +1,14 @@
 /*  const stock = []; */
 
 let stockStorage = JSON.parse(localStorage.getItem("stockStorage")) || [];
+let shopCartStorage = JSON.parse(localStorage.getItem("shopCartStorage")) || [];
 
+const addProduct = (id) => {
+    let product = stockStorage.find(item => item.id === id);
+
+    shopCartStorage.push(product);
+    localStorage.setItem("shopCartStorage", JSON.stringify(shopCartStorage));
+}
 
 class Product {
     constructor(handmakerName, nameProduct, priceProduct, totalStock){
@@ -55,12 +62,13 @@ stockStorage.forEach(product => {
     </div>
     <div class="buttonToRight">
         <b>$${product.priceProduct}</b>
-        <button id="addToBuy" class="buttonShopCart">Añadir Al Carrito</button>
+        <button id="addToBuy_${product.idProduct}" class="buttonShopCart">Añadir Al Carrito</button>
     </div>
     `
     cardSection.append(div);
+
+    let button = document.getElementById(`addToBuy_${product.idProduct}`);
+    button.addEventListener("click", () => addProduct(product.idProduct))
+
+
 });
-
-
-
-// console.log(stockStorage);
