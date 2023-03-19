@@ -5,16 +5,73 @@ body {
     margin: 0;
     padding: 0;
 }
-
 /* HEADER */
 
 header {
-    background-color:burlywood;
-    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:rgb(220, 161, 85);
     margin-bottom: 50px;
 }
+/* HEADER LEFT */
+.headerLeft {
+    margin-left: 100px;
+}
+.logoFull {
+    display: none;
+}
+.headerLeft:hover .logoAbreviated {
+    display: none;
+    transition: opacity 5s ease-in-out;
+    -webkit-transition: opacity 5s ease-in-out;
+    -moz-transition: opacity 5s ease-in-out;
+    -ms-transition: opacity 5s ease-in-out;
+    -o-transition: opacity 5s ease-in-out;
+}
+.headerLeft:hover .logoFull{
+    display: block;
+    transition: opacity 5s ease-in-out;
+    -webkit-transition: opacity 5s ease-in-out;
+    -moz-transition: opacity 5s ease-in-out;
+    -ms-transition: opacity 5s ease-in-out;
+    -o-transition: opacity 5s ease-in-out;
+}
+/* SEARCHER */
 
- .myform {
+/* HEADER RIGHT */
+
+.headerRightBtn {
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+} 
+.headerRight .icon {
+    margin: 0 20px;
+}
+
+
+/* .logoAbreviated:hover .logoFull {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+}
+
+.logoAbreviated:hover{
+    opacity: 0;
+    transition: opacity 0.5 ease-in-out;
+    -webkit-transition: opacity 0.5 ease-in-out;
+    -moz-transition: opacity 0.5 ease-in-out;
+    -ms-transition: opacity 0.5 ease-in-out;
+    -o-transition: opacity 0.5 ease-in-out;
+} */
+
+/* FORM */
+.myform {
     display: flex;
     flex-direction: column;
 }

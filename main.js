@@ -1,11 +1,12 @@
-/*  const stock = []; */
-
 let stockStorage = JSON.parse(localStorage.getItem("stockStorage")) || [];
 let shopCartStorage = JSON.parse(localStorage.getItem("shopCartStorage")) || [];
 
 const addProduct = (id) => {
-    let product = stockStorage.find(item => item.id === id);
-
+    console.log(stockStorage);
+    console.log(id);
+    let product = stockStorage.find(item => item.idProduct === id);
+    
+    console.log(product);
     shopCartStorage.push(product);
     localStorage.setItem("shopCartStorage", JSON.stringify(shopCartStorage));
 }
@@ -25,8 +26,8 @@ let formulary = document.getElementById("formulary");
 
 formulary.addEventListener("submit", (e) => {
     e.preventDefault();
-    // let inputs = e.target.children;
-    let handmakerName= document.querySelector("#handmakerName").value;
+
+    let handmakerName= document.querySelector("#handmakerName").value.toCamelCase();
     console.log(handmakerName);
     let nameProduct = document.querySelector("#inputName").value.toUpperCase();
     console.log(nameProduct);
@@ -35,7 +36,7 @@ formulary.addEventListener("submit", (e) => {
     let totalStock = document.querySelector("#inputTotalStock").value; 
     console.log(totalStock);
 
-    if (nameProduct === "" || isNaN(priceProduct) || isNaN(totalStock)){
+    if (nameProduct === "" || handmakerName === "" || isNaN(priceProduct) || isNaN(totalStock)){
     alert("Complete todos los campos")
     return;
     }
@@ -47,28 +48,76 @@ localStorage.setItem("stockStorage", JSON.stringify(stockStorage));
 nameProduct = "";
 priceProduct = "";
 totalStock = "";
+location.reload();
 });
 
 let cardSection = document.getElementById("sectioncards");
-stockStorage.forEach(product => {
-    let div = document.createElement("div");
-    div.className = "mycard";
 
-    div.innerHTML = `
-    <img src="img/collar artesanal 1.jpg" alt="Collar artesanal">
-    <div class="wordCard">
-    <h2 class="productNameCard">${product.nameProduct}</h2>
-    <p class="handmakerName">${product.handmakerName}</p>
-    </div>
-    <div class="buttonToRight">
-        <b>$${product.priceProduct}</b>
-        <button id="addToBuy_${product.idProduct}" class="buttonShopCart">Añadir Al Carrito</button>
-    </div>
-    `
-    cardSection.append(div);
+let allFilter = document.getElementById("allFilter");
+let upToDown = document.getElementById("upToDown"); 
+let downToUp = document.getElementById("downToUp"); 
 
-    let button = document.getElementById(`addToBuy_${product.idProduct}`);
-    button.addEventListener("click", () => addProduct(product.idProduct))
+const cards = (array) => {
+array.forEach(product => {
+        let div = document.createElement("div");
+        div.className = "mycard";
+    
+        div.innerHTML = `
+        <img src="img/collar artesanal 1.jpg" alt="Collar artesanal">
+        <div class="wordCard">
+        <h2 class="productNameCard">${product.nameProduct}</h2>
+        <p class="handmakerName">${product.handmakerName}</p>
+        </div>
+        <div class="buttonToRight">
+            <b>$${product.priceProduct}</b>
+            <button id="addToBuy_${product.idProduct}" class="buttonShopCart">Añadir Al Carrito</button>
+        </div>
+        `
+        cardSection.append(div);
+    
+        let button = document.getElementById(`addToBuy_${product.idProduct}`);
+        button.addEventListener("click", () => addProduct(product.idProduct));    
+})};
 
+cards(stockStorage);
 
+allFilter.addEventListener("click", () => {
+    cardSection.innerHTML = "";
+    cards(stockStorage)
+    console.log(stockStorage);
 });
+upToDown.addEventListener("click", () =>{
+    cardSection.innerHTML = "";
+    let upToDownStorage = stockStorage.slice().sort((a, b) => (a.priceProduct - b.priceProduct));
+    cards(upToDownStorage);
+    console.log(upToDownStorage);
+});
+downToUp.addEventListener("click", () => {
+    cardSection.innerHTML = "";
+    let downToUpStorage = stockStorage.slice().sort((a, b) => (b.priceProduct - a.priceProduct));
+    cards(downToUpStorage);
+    console.log(downToUpStorage);
+});
+
+let searchInput = document.getElementById("searchInput");
+let searchButton = document.getElementById("searchButton");
+
+let query = searchInput.value;
+
+const searchProducts = (query) => {
+
+    stockStorage.filter(function(product) {
+        return product.nameProduct.toLowerCase().includes(query.toLowerCase());
+    });
+}
+
+
+searchButton.addEventListener("click", () => {
+    // cardSection.innerHTML = "";
+
+let array = searchProducts(query);
+
+cards(array)
+// cards(array);
+});
+

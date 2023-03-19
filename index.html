@@ -4,30 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=}, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">    
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 
 <header>
-    <main>
-        <form id="formulary" class="myform">
-        <label for="handmakerName">Nombre de Artesano</label>
-        <input type="text" id="handmakerName" name="handmakerName">
-            
-        <label for="inputName">Ingresa el nombre del producto</label>
-        <input type="text" id="inputName" name="nameProduct">
 
-        <label for="inputPrice">Ingresa el precio</label>
-        <input type="number" id="inputPrice" name="priceProduct">
+<form id="formulary" class="myform">
+    <label for="handmakerName">Nombre de Artesano</label>
+    <input type="text" id="handmakerName" name="handmakerName">
+                
+    <label for="inputName">Ingresa el nombre del producto</label>
+    <input type="text" id="inputName" name="nameProduct">
+    
+    <label for="inputPrice">Ingresa el precio</label>
+    <input type="number" id="inputPrice" name="priceProduct">
+    
+    <label for="inputTotalStock"> Ingresa cuanto stock tenes</label>
+    <input type="number" id="inputTotalStock" name="totalStock">
+    
+    <input type="submit" value="Submit" id="submitform">
+</form> 
 
-        <label for="inputTotalStock"> Ingresa cuanto stock tenes</label>
-        <input type="number" id="inputTotalStock" name="totalStock">
 
-        <input type="submit" value="Submit" id="submitform">
-    </form>
+
+<form id="filterForm">
+    <input type="radio" name="filter" id="allFilter" value="allFilter" checked>
+    <input type="radio" name="filter" id="downToUp" value="downToUp">
+    <input type="radio" name="filter" id="upToDown" value="upToDown">
+</form> 
+
+<div class="headerLeft logo">
+    <h2 class="logoAbreviated">TM</h2>
+    <h2 class="logoFull">TU MANUFACTUREO</h2>
+</div>
+<div class="searcher">
+    <input type="text" id="searchInput" autocomplete="off"><span>
+        <button type="submit" id="searchButton" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</div>
+
+
+<div class="headerRight">
+    <button class="headerRightBtn"><i class="fa-solid fa-cart-shopping icon"></i></button>
+    <button class="headerRightBtn"><i class="fa-regular fa-user icon"></i></button>
+</div>
+
 </header>
-
+<main>
 <div class="container-section-cards">
 <section class="section-cards" id="sectioncards">
 </div>
