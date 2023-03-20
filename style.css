@@ -8,38 +8,94 @@ body {
 /* HEADER */
 
 header {
+    height: 200px;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
+    background-image: url(img/TuManufactureo2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     background-color:rgb(220, 161, 85);
     margin-bottom: 50px;
 }
+
 /* HEADER LEFT */
 .headerLeft {
-    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
 }
-.logoFull {
-    display: none;
+.headerLeft button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 6.5px;
+    background-color: transparent;
+    border: 0;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
 }
-.headerLeft:hover .logoAbreviated {
-    display: none;
-    transition: opacity 5s ease-in-out;
-    -webkit-transition: opacity 5s ease-in-out;
-    -moz-transition: opacity 5s ease-in-out;
-    -ms-transition: opacity 5s ease-in-out;
-    -o-transition: opacity 5s ease-in-out;
+.plusIcon {
+    width: 25px;
+    height: 25px;
 }
-.headerLeft:hover .logoFull{
-    display: block;
-    transition: opacity 5s ease-in-out;
-    -webkit-transition: opacity 5s ease-in-out;
-    -moz-transition: opacity 5s ease-in-out;
-    -ms-transition: opacity 5s ease-in-out;
-    -o-transition: opacity 5s ease-in-out;
+.headerLeft button:hover {
+    background-color: #F4ECF7;
+    transition: all .1s ease;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
 }
+
+.headerLeft .filterForm {
+    display: flex;
+    flex-direction: column;
+}
+.headerLeft .filterForm input {
+    margin: 6.5px;
+}
+
 /* SEARCHER */
 
+
+
 /* HEADER RIGHT */
+.headerRight {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.headerRight button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
+}
+.headerRight button:hover {
+        background-color: #F4ECF7;
+        transition: all .1s ease;
+        -webkit-transition: all .1s ease;
+        -moz-transition: all .1s ease;
+        -ms-transition: all .1s ease;
+        -o-transition: all .1s ease;
+}
 
 .headerRightBtn {
     background-color: transparent;
@@ -49,26 +105,6 @@ header {
 .headerRight .icon {
     margin: 0 20px;
 }
-
-
-/* .logoAbreviated:hover .logoFull {
-    display: inline-block;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    -webkit-transition: opacity 0.5s ease-in-out;
-    -moz-transition: opacity 0.5s ease-in-out;
-    -ms-transition: opacity 0.5s ease-in-out;
-    -o-transition: opacity 0.5s ease-in-out;
-}
-
-.logoAbreviated:hover{
-    opacity: 0;
-    transition: opacity 0.5 ease-in-out;
-    -webkit-transition: opacity 0.5 ease-in-out;
-    -moz-transition: opacity 0.5 ease-in-out;
-    -ms-transition: opacity 0.5 ease-in-out;
-    -o-transition: opacity 0.5 ease-in-out;
-} */
 
 /* FORM */
 .myform {
@@ -92,6 +128,7 @@ header {
 .section-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    grid-template-rows: 500px;
     gap: 20px;
     place-items: center;
 }
@@ -99,17 +136,19 @@ header {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 300px; 
-    max-height: 400px;
+    max-width: 300px;
+    height: 500px;
+    max-height: 500px;
     margin: 0 10px;
     padding-bottom: 10px;
     background-color:#F4ECF7;
     padding: 5px;
 }
-.mycard img {
+ .mycard img {
     max-width: 100%;
-    height: auto;
-}
+    height: 380px;
+    object-fit: cover;
+} 
 
 /* PEQUEÑECES CARDS */
 .productNameCard {
@@ -144,4 +183,12 @@ header {
     left: 10px;
     bottom: -5px;
     font-weight: 300;
+    max-width: 100px;
+    overflow:hidden;
+}
+
+/* SHOP CART */
+
+.Cardh1 {
+    text-align: center;
 }
