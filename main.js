@@ -6,7 +6,7 @@ const addProduct = (id) => {
  
     shopCartStorage.push(product);
     localStorage.setItem("shopCartStorage", JSON.stringify(shopCartStorage));
-}
+} // AÑADIR PRODUCTO POR MEDIO DE BUTTON
 
 class Product {
     constructor(handmakerName, nameProduct, URLimg, URLDescription, priceProduct, totalStock){
@@ -19,7 +19,7 @@ class Product {
         this.totalStock = totalStock;
         this.totalSales = 0;
     }
-}
+} // CLASE CONSTRUCTORA DE PRODUCTOS
 
 
 // funcion buscada en google para que quede mas bonito el proyecto, sinceridad ante todo
@@ -29,15 +29,15 @@ function toPascalCase(frase) {
     }).join(' ');
   }
 
+// FORMULARIO AGREGAR PRODUCTOS AL STOCKSTORAGE
 let formulary = document.getElementById("formulary");
-
 formulary.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let handmakerName = toPascalCase(document.querySelector("#handmakerName").value);
     let nameProduct = document.querySelector("#inputName").value.toUpperCase();
-    let URLimg = document.querySelector("#inputURL").value;
-    let URLDescription = document.querySelector("#inputIMGDescription").value;
+    let URLimg = document.querySelector("#URLimg").value;
+    let URLDescription = document.querySelector("#URLDescription").value;
     let priceProduct = document.querySelector("#inputPrice").value;
     let totalStock = document.querySelector("#inputTotalStock").value; 
 
@@ -54,13 +54,11 @@ formulary.reset();
 location.reload();
 });
 
-let cardSection = document.getElementById("sectioncards");
 
-let allFilter = document.getElementById("allFilter");
-let upToDown = document.getElementById("upToDown"); 
-let downToUp = document.getElementById("downToUp"); 
 
 /* CONSTRUCTOR DE CARDS */
+
+let cardSection = document.getElementById("sectioncards");
 
 const cards = (array) => {
 array.forEach(product => {
@@ -68,7 +66,9 @@ array.forEach(product => {
         div.className = "mycard";
     
         div.innerHTML = `
+        <button class="eliminateButtonInCard"><i class="fa-sharp fa-solid fa-trash"></i></button>
         <img src="${product.URLimg}" alt="${product.URLDescription}">
+        <div class="cardContent">
         <div class="wordCard">
         <h2 class="productNameCard">${product.nameProduct}</h2>
         <p class="handmakerName">${product.handmakerName}</p>
@@ -77,14 +77,19 @@ array.forEach(product => {
         <b class="price">$${product.priceProduct}</b>
         <button id="addToBuy_${product.idProduct}" class="buttonShopCart">Añadir Al Carrito</button>
         </div>
+        </div>
         `
         cardSection.append(div);
     
         let button = document.getElementById(`addToBuy_${product.idProduct}`);
         button.addEventListener("click", () => addProduct(product.idProduct));    
-})};
+})}; // CONSTRUCTORA DE CARDS EN EL DOM
+cards(stockStorage); // CUANDO SE INICIA LA PAGINA, ESTO ESCRIBE LA PRIMERA VISUALIZACION
 
-cards(stockStorage);
+// CIRCULITOS DE FILTRADO
+let allFilter = document.getElementById("allFilter");
+let upToDown = document.getElementById("upToDown"); 
+let downToUp = document.getElementById("downToUp"); 
 
 allFilter.addEventListener("click", () => {
     cardSection.innerHTML = "";
@@ -101,10 +106,9 @@ downToUp.addEventListener("click", () => {
     cards(downToUpStorage);
 });
 
- let query = document.getElementById("searchInput").value;
-
- let searchInput = document.getElementById("searchInput");
-
+// BUSCADOR DE OBJETOS // BARRA DE BUSQUEDA
+let query = document.getElementById("searchInput").value;
+let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
 let searchForm = document.getElementById("searcher");
 
@@ -137,7 +141,7 @@ if(arrayIncludes.length === 0){
 
 
 
-// MODAL
+// FORM MODAL 
 let shopCartBtn = document.getElementById("shopCartBtn");
 let cardH1 = document.getElementById("h1ShopCart");
 
@@ -146,11 +150,20 @@ shopCartBtn.addEventListener("click", () => {
     cardSection.innerHTML = "";
     let h1 = document.createElement("div");
     h1.innerHTML = `<h1 class="Cardh1">Carrito De Compras</h1>`
-    
+
 cardH1.append(h1);
 cards(shopCartStorage);
+});
+
+// ELIMINAR PRODUCTOS DEL STOCK STORAGE
+const eliminateButton = document.getElementById("eliminateButton"); 
+
+eliminateButton.addEventListener("click", () => {
+
+
 
 })
+
 
 
 
@@ -163,4 +176,8 @@ COLLAR : https://images.pexels.com/photos/906056/pexels-photo-906056.jpeg?auto=c
 SOMBRERO: https://images.pexels.com/photos/984619/pexels-photo-984619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 
 RELOJ MANO : https://images.pexels.com/photos/1697214/pexels-photo-1697214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+PULSERA : https://images.pexels.com/photos/885218/pexels-photo-885218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+
+ARETES HIPPIES : https://images.pexels.com/photos/10283309/pexels-photo-10283309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 */

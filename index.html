@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta2/css/all.css" integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="style.css">
     <title>E-commerce ARTESANAL</title>
 </head>
@@ -14,6 +16,7 @@
 
 <header>
     <div class="headerLeft">
+        <button class="eliminateButton" id="eliminateButton"><i class="fa-sharp fa-solid fa-trash"></i></button>
     <button class="formButton" id="formButton" data-bs-toggle="modal" data-bs-target="#formModal"><i class="fa-solid fa-plus plusIcon"></i></button>
     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
@@ -59,8 +62,8 @@
 <!-- Barra de busqueda -->
 <div>
 <form id="searcher" class="searcher">
-    <input type="text" id="searchInput" autocomplete="off"><span>
-    <button type="submit" id="searchButton" class="btn btn-primary"><i class="fas fa-search"></i></button>
+    <input class="searcherInput" type="text" id="searchInput" autocomplete="off"><span>
+    <button class="btn searcherButton" type="submit" id="searchButton"><i class="fas fa-search"></i></button>
 </form>
 </div>
 
@@ -91,8 +94,9 @@
 
 
 </main>
-
+<script src="https://pro.fontawesome.com/releases/v6.0.0-beta2/js/all.js" integrity="sha384-..." crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="main.js"></script>
 </body>
 </html>
